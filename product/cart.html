@@ -68,9 +68,10 @@
               >
             </li>
             <li>
+              <!-- ✅ تم التصحيح: كانت href="#" -->
               <a
-                href="#"
-                class="font-brand font-medium text-[1.05rem] tracking-[0.08em] text-[#d4847a] block py-2 md:py-0"
+                href="../About/about.html"
+                class="font-brand font-normal text-[1.05rem] tracking-[0.08em] text-neutral-700 hover:text-[#d4847a] transition-colors duration-200 block py-2 md:py-0"
                 >About</a
               >
             </li>
@@ -229,7 +230,6 @@
     </div>
 
     <script>
-      // ── Load cart from localStorage ──
       const cartItemsEl = document.getElementById("cartItems");
       const emptyCartEl = document.getElementById("emptyCart");
       const cartSummary = document.getElementById("cartSummary");
@@ -340,7 +340,6 @@
             confirmButtonText: "Yes, Logout",
           }).then((r) => {
             if (r.isConfirmed) {
-              // مسح كل حاجة
               localStorage.removeItem("currentUser");
               localStorage.removeItem("cartItems");
               localStorage.removeItem("cartCount");
@@ -354,15 +353,12 @@
         }
       });
 
-      // ── Sync wishlist & cart badges from localStorage ──
       function syncBadges() {
         const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
         const wishlistItems =
           JSON.parse(localStorage.getItem("wishlistItems")) || [];
-
         const cartCount = cartItems.reduce((s, i) => s + (i.qty || 1), 0);
         const wishlistCount = wishlistItems.length;
-
         document
           .querySelectorAll("#cartBadge")
           .forEach((el) => (el.textContent = cartCount));
@@ -371,7 +367,6 @@
           .forEach((el) => (el.textContent = wishlistCount));
       }
 
-      // Mobile menu
       document.getElementById("menu-toggle").addEventListener("click", () => {
         document.getElementById("navbar-default").classList.toggle("hidden");
       });

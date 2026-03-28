@@ -68,9 +68,10 @@
               >
             </li>
             <li>
+              <!-- ✅ تم التصحيح: كانت href="#" -->
               <a
-                href="#"
-                class="font-brand font-medium text-[1.05rem] tracking-[0.08em] text-[#d4847a] block py-2 md:py-0"
+                href="../About/about.html"
+                class="font-brand font-normal text-[1.05rem] tracking-[0.08em] text-neutral-700 hover:text-[#d4847a] transition-colors duration-200 block py-2 md:py-0"
                 >About</a
               >
             </li>
@@ -159,6 +160,7 @@
       </div>
     </nav>
     <div class="h-20"></div>
+
     <!-- Wishlist Content -->
     <div class="max-w-screen-lg mx-auto px-4 md:px-8 py-12">
       <h1
@@ -233,75 +235,39 @@
             <h2
               class="font-brand font-medium tracking-widest text-neutral-800 text-base mb-4"
             >
-              <span class="inline-block border-b border-[#d4847a] pb-1"
-                >Shop</span
-              >
+              <span class="inline-block border-b border-[#d4847a] pb-1">Shop</span>
             </h2>
             <nav class="flex flex-col gap-2">
-              <a
-                href="#"
-                class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors"
-                >New Arrivals</a
-              >
-              <a
-                href="#"
-                class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors"
-                >Best Sellers</a
-              >
-              <a
-                href="#"
-                class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors"
-                >Sale & Offers</a
-              >
+              <a href="#" class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors">New Arrivals</a>
+              <a href="#" class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors">Best Sellers</a>
+              <a href="#" class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors">Sale & Offers</a>
             </nav>
           </div>
           <div class="lg:w-1/4 md:w-1/2 w-full px-4 mb-8">
             <h2
               class="font-brand font-medium tracking-widest text-neutral-800 text-base mb-4"
             >
-              <span class="inline-block border-b border-[#d4847a] pb-1"
-                >Help</span
-              >
+              <span class="inline-block border-b border-[#d4847a] pb-1">Help</span>
             </h2>
             <nav class="flex flex-col gap-2">
-              <a
-                href="#"
-                class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors"
-                >Shipping & Returns</a
-              >
-              <a
-                href="#"
-                class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors"
-                >Size Guide</a
-              >
-              <a
-                href="#"
-                class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors"
-                >FAQs</a
-              >
+              <a href="#" class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors">Shipping & Returns</a>
+              <a href="#" class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors">Size Guide</a>
+              <a href="#" class="text-sm text-neutral-500 hover:text-[#d4847a] transition-colors">FAQs</a>
             </nav>
           </div>
         </div>
       </div>
       <div class="border-t border-[#f0e6e0]">
-        <div
-          class="container mx-auto py-4 px-5 flex items-center justify-between"
-        >
+        <div class="container mx-auto py-4 px-5 flex items-center justify-between">
           <p class="text-neutral-400 text-sm">
             © 2026 Brand —
-            <a
-              href="https://www.linkedin.com/in/amanyhesham/"
-              target="_blank"
-              class="hover:text-[#d4847a] transition-colors"
-              >@AmanyHesham</a
-            >
+            <a href="https://www.linkedin.com/in/amanyhesham/" target="_blank" class="hover:text-[#d4847a] transition-colors">@AmanyHesham</a>
           </p>
         </div>
       </div>
     </footer>
 
     <script>
-      // ── Helpers ──────────────────────────────────────────────────
       function getWishlist() {
         return JSON.parse(localStorage.getItem("wishlistItems")) || [];
       }
@@ -315,13 +281,11 @@
         localStorage.setItem("cartItems", JSON.stringify(c));
       }
 
-      // ── Elements ─────────────────────────────────────────────────
       const wishGrid = document.getElementById("wishGrid");
       const emptyWishEl = document.getElementById("emptyWish");
       const wishActions = document.getElementById("wishActions");
       const wishSubEl = document.getElementById("wishSubtitle");
 
-      // ── Stars builder ─────────────────────────────────────────────
       function buildStars(rating) {
         const r = Math.round(rating || 0);
         return Array.from(
@@ -333,49 +297,25 @@
         ).join("");
       }
 
-      // ── Move to cart ──────────────────────────────────────────────
       function moveToCart(id) {
         let wishlist = getWishlist();
         const item = wishlist.find((i) => i.id === id);
         if (!item) return;
-
-        // Add to cart
         const cart = getCart();
         const idx = cart.findIndex((i) => i.id === id);
         if (idx > -1) {
           cart[idx].qty += 1;
         } else {
-          cart.push({
-            id: item.id,
-            title: item.title,
-            price: item.price,
-            img: item.img,
-            category: item.category,
-            qty: 1,
-          });
+          cart.push({ id: item.id, title: item.title, price: item.price, img: item.img, category: item.category, qty: 1 });
         }
         saveCart(cart);
-
-        // Remove from wishlist
         wishlist = wishlist.filter((i) => i.id !== id);
         saveWishlist(wishlist);
         updateBadges();
         renderWishlist();
-
-        Swal.fire({
-          toast: true,
-          position: "top-end",
-          icon: "success",
-          title: "Moved to cart!",
-          text: item.title,
-          showConfirmButton: false,
-          timer: 2000,
-          timerProgressBar: true,
-          iconColor: "#d4847a",
-        });
+        Swal.fire({ toast: true, position: "top-end", icon: "success", title: "Moved to cart!", text: item.title, showConfirmButton: false, timer: 2000, timerProgressBar: true, iconColor: "#d4847a" });
       }
 
-      // ── Remove from wishlist ──────────────────────────────────────
       function removeFromWishlist(id) {
         let wishlist = getWishlist().filter((i) => i.id !== id);
         saveWishlist(wishlist);
@@ -383,25 +323,12 @@
         renderWishlist();
       }
 
-      // ── Clear wishlist ────────────────────────────────────────────
       function clearWishlist() {
-        Swal.fire({
-          title: "Clear wishlist?",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#d4847a",
-          cancelButtonColor: "#aaa",
-          confirmButtonText: "Yes, clear it",
-        }).then((r) => {
-          if (r.isConfirmed) {
-            saveWishlist([]);
-            updateBadges();
-            renderWishlist();
-          }
+        Swal.fire({ title: "Clear wishlist?", icon: "warning", showCancelButton: true, confirmButtonColor: "#d4847a", cancelButtonColor: "#aaa", confirmButtonText: "Yes, clear it" }).then((r) => {
+          if (r.isConfirmed) { saveWishlist([]); updateBadges(); renderWishlist(); }
         });
       }
 
-      // ── Update badges ─────────────────────────────────────────────
       function updateBadges() {
         const cart = getCart();
         const wishlist = getWishlist();
@@ -411,54 +338,35 @@
         if (wishEl) wishEl.textContent = wishlist.length;
       }
 
-      // ── Render ────────────────────────────────────────────────────
       function renderWishlist() {
         const wishlist = getWishlist();
         wishGrid.innerHTML = "";
-
         if (wishlist.length === 0) {
           emptyWishEl.classList.remove("hidden");
           wishActions.classList.add("hidden");
           wishSubEl.textContent = "";
           return;
         }
-
         emptyWishEl.classList.add("hidden");
         wishActions.classList.remove("hidden");
         wishSubEl.textContent = `You have ${wishlist.length} saved item${wishlist.length > 1 ? "s" : ""}`;
-
         wishlist.forEach((item) => {
           const oldPrice = item.discount
             ? `<span class="text-xs text-neutral-400 line-through font-sans">$${(item.price / (1 - item.discount / 100)).toFixed(0)}</span>
          <span class="text-[0.65rem] text-[#d4847a] font-sans font-semibold bg-[#fdf0ed] px-2 py-0.5 rounded-full">-${item.discount}%</span>`
             : "";
-
           const card = document.createElement("div");
-          card.className =
-            "group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-[#f0e6e0]";
+          card.className = "group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 border border-[#f0e6e0]";
           card.innerHTML = `
       <div class="relative overflow-hidden aspect-[3/4] bg-[#f5efed]">
-        <img src="${item.img}" alt="${item.title}"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          onerror="this.src='https://placehold.co/400x530/f5efed/d4847a?text=Brand'" />
-
-        <!-- Remove from wishlist -->
-        <button onclick="removeFromWishlist(${item.id})"
-          class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-[#d4847a] hover:text-red-400 transition-colors shadow-sm">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-          </svg>
+        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x530/f5efed/d4847a?text=Brand'" />
+        <button onclick="removeFromWishlist(${item.id})" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center text-[#d4847a] hover:text-red-400 transition-colors shadow-sm">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </button>
-
-        <!-- Move to cart slide-up -->
         <div class="absolute bottom-0 left-0 right-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-          <button onclick="moveToCart(${item.id})"
-            class="w-full bg-[#1a1a1a]/90 hover:bg-[#d4847a] text-white text-xs font-sans font-medium py-2.5 tracking-wide transition-colors duration-200">
-            + Move to Cart
-          </button>
+          <button onclick="moveToCart(${item.id})" class="w-full bg-[#1a1a1a]/90 hover:bg-[#d4847a] text-white text-xs font-sans font-medium py-2.5 tracking-wide transition-colors duration-200">+ Move to Cart</button>
         </div>
       </div>
-
       <div class="p-3.5">
         <p class="text-[0.7rem] text-neutral-400 font-sans uppercase tracking-widest mb-0.5">${item.category || ""}</p>
         <h3 class="font-brand text-[1.05rem] text-neutral-800 leading-snug mb-1 truncate">${item.title}</h3>
@@ -471,27 +379,17 @@
           ${oldPrice}
         </div>
       </div>`;
-
           wishGrid.appendChild(card);
         });
       }
 
-      // ── Auth ──────────────────────────────────────────────────────
       const authBtn = document.getElementById("authBtn");
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       if (currentUser) authBtn.textContent = currentUser.name.split(" ")[0];
       authBtn.addEventListener("click", () => {
         if (JSON.parse(localStorage.getItem("currentUser"))) {
-          Swal.fire({
-            title: "Log out?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#d4847a",
-            cancelButtonColor: "#aaa",
-            confirmButtonText: "Yes, Logout",
-          }).then((r) => {
+          Swal.fire({ title: "Log out?", icon: "question", showCancelButton: true, confirmButtonColor: "#d4847a", cancelButtonColor: "#aaa", confirmButtonText: "Yes, Logout" }).then((r) => {
             if (r.isConfirmed) {
-              // مسح كل حاجة
               localStorage.removeItem("currentUser");
               localStorage.removeItem("cartItems");
               localStorage.removeItem("cartCount");
@@ -504,7 +402,11 @@
           window.location.href = "../Authentication/login.html";
         }
       });
-      // ── Init ──────────────────────────────────────────────────────
+
+      document.getElementById("menu-toggle").addEventListener("click", () => {
+        document.getElementById("navbar-default").classList.toggle("hidden");
+      });
+
       updateBadges();
       renderWishlist();
     </script>
