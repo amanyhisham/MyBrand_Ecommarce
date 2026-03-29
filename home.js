@@ -40,7 +40,7 @@ authBtn.addEventListener("click", () => {
       }
     });
   } else {
-    window.location.href = "../Authentication/login.html";
+    window.location.href = "Authentication/login.html";
   }
 });
 syncBadges();
