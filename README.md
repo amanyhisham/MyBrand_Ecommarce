@@ -46,14 +46,6 @@ The project displays products dynamically from an API and provides a smooth user
 4. Allow users to search for products
 5. Load more products on button click
 
----
-
-## 📸 Preview
-
-(Add screenshots of your project here)
-
----
-
 ## 💡 Future Improvements
 
 * 🛒 Fully functional cart system
