@@ -21,6 +21,15 @@
         },
       };
     </script>
+    <style>
+      html {
+  scroll-behavior: smooth;
+}
+
+#productContainer {
+  scroll-margin-top: 80px; 
+}
+    </style>
   </head>
   <body class="font-sans bg-[#faf8f7]">
     <!--navbar sec1------------------------------------------------------------------------------------------------------------------------>
@@ -152,7 +161,7 @@
                 >0</span
               >
             </div>
-            
+
             <!-- Auth button -->
             <button
               id="authBtn"
@@ -207,7 +216,7 @@
           <button
             class="font-brand text-base font-medium bg-[#d4847a] hover:bg-[#b8685e] text-white px-7 py-2.5 rounded-sm transition-colors duration-200"
           >
-            Shop Now
+            <a href="#productContainer"> Shop Now</a>
           </button>
           <button
             class="font-brand text-base font-medium border border-white text-white hover:bg-white hover:text-neutral-800 px-7 py-2.5 rounded-sm transition-colors duration-200"
@@ -268,7 +277,7 @@
     <!----filter& search& sort---------------------------------------------------------------------------------------------------------------------------------------->
 
     <!-- product card------------------------------------------------------------------------------------------------------------------------>
-    <div class="max-w-screen-xl mx-auto px-4 md:px-8 pb-16">
+    <div  id="productContainer" class="max-w-screen-xl mx-auto px-4 md:px-8 pb-16">
       <div
         id="productGrid"
         class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"
