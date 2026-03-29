@@ -61,15 +61,4 @@ The project displays products dynamically from an API and provides a smooth user
 * ❤️ Wishlist functionality
 * 🔍 Advanced filters (price, category)
 
----
-
-## 👩‍💻 Author
-
-**Amany Hisham**
-Frontend Developer 💻
-
----
-
-## ⭐ Support
-
-If you like this project, don’t forget to give it a star ⭐
+ 
