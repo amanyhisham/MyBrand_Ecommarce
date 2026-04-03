@@ -45,6 +45,7 @@ The project displays products dynamically from an API and provides a smooth user
 3. Display products in a grid layout
 4. Allow users to search for products
 5. Load more products on button click
+6. can put element in wishlist,cart
 
 ## 💡 Future Improvements
 
